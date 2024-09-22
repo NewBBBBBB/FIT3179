@@ -4,7 +4,7 @@
     "height": 400,
     "projection": {"type": "equalEarth"},
     "data": {
-      "url": "https://raw.githubusercontent.com/NewBBBBBB/test/refs/heads/main/malaysia-states.topojson",
+      "url": "https://raw.githubusercontent.com/NewBBBBBB/FIT3179/refs/heads/main/malaysia-states.topojson",
       "format": {"type": "topojson", "feature": "states"}
     },
     "transform": [
@@ -12,7 +12,7 @@
         "lookup": "properties.Name",
         "from": {
           "data": {
-            "url": "https://raw.githubusercontent.com/NewBBBBBB/test/refs/heads/main/hh_income_state%20-%20Copy.csv"
+            "url": "https://raw.githubusercontent.com/NewBBBBBB/FIT3179/refs/heads/main/hh_income_state.csv"
           },
           "key": "state",
           "fields": ["poverty_absolute"]
