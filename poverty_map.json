@@ -1,0 +1,50 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Poverty Rate in Malaysia",
+    "width": 800,
+    "height": 400,
+    "projection": {"type": "equalEarth"},
+    "data": {
+      "url": "https://raw.githubusercontent.com/NewBBBBBB/test/refs/heads/main/malaysia-states.topojson",
+      "format": {"type": "topojson", "feature": "states"}
+    },
+    "transform": [
+      {
+        "lookup": "properties.Name",
+        "from": {
+          "data": {
+            "url": "https://raw.githubusercontent.com/NewBBBBBB/test/refs/heads/main/hh_income_state%20-%20Copy.csv"
+          },
+          "key": "state",
+          "fields": ["poverty_absolute"]
+        }
+      }
+    ],
+    "mark": {
+      "type": "geoshape",
+      "stroke": "black",      
+      "strokeWidth": 0.5      
+    },
+    "encoding": {
+      "color": {
+        "field": "poverty_absolute",
+        "type": "quantitative",
+        "scale": {
+          "type": "threshold",
+          "domain": [0.1, 1, 2, 5, 10, 15, 20],
+          "range": ["#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15", "#67000d", "#400007"]
+        },
+        "legend": {
+          "title": "Poverty Rate (%)",
+          "format": ".1f",
+          "labelAlign": "left",
+          "orient": "right"
+        }
+      },
+      "tooltip": [
+        {"field": "properties.Name", "type": "nominal", "title": "State"},
+        {"field": "poverty_absolute", "type": "quantitative", "title": "Poverty Rate (%)"}
+      ]
+    }
+  }
+  
